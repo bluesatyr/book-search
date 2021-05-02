@@ -13,52 +13,50 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String! ) {
-    addUser(username: $username, email: $email, password: $password){
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
+      token
+      user {
         _id
-      username
-      email
-    }
-  }
-`;
-
-/*
-export const SAVE_BOOK = gql`
-mutation saveBook($bookData:BookInput!){
-  saveBook(bookData:$bookData){
-    username
-    email 
-    savedBooks {
-        _id
-        title
-        authors
-        bookId
-        description
-        link
-        image
-  }
-   }
-  }
-`;
-*/
-
-export const SAVE_BOOK = gql`
-  mutation saveBook($title: String!, $bookId: String!, $authors: [String], $description: String!, $link: String, $image: String){
-    saveBook(bookData: {title: $title, bookId: $bookId, authors: $authors, description: $description, link: $link, image: $image}) {
-      _id
-      username
-      savedBooks {
-        _id
-        title
-        authors
-        bookId
-        description
-        link
-        image
+        username
       }
     }
   }
 `;
+
+
+export const SAVE_BOOK = gql`
+mutation saveBook($bookData:SaveBookInput!){
+  saveBook(bookData:$bookData){
+    username
+    email 
+    savedBooks {
+    authors
+    title
+    description
+  }
+   }
+  }
+`;
+
+
+// export const SAVE_BOOK = gql`
+//   mutation saveBook($title: String!, $bookId: String!, $authors: [String], $description: String!, $link: String, $image: String){
+//     saveBook(bookData: {title: $title, bookId: $bookId, authors: $authors, description: $description, link: $link, image: $image}) {
+//       _id
+//       username
+//       savedBooks {
+//         _id
+//         title
+//         authors
+//         bookId
+//         description
+//         link
+//         image
+//       }
+//     }
+//   }
+// `;
 
 export const REMOVE_BOOK = gql`
   mutation removeBook($bookId: String!) {
