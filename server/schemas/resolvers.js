@@ -14,13 +14,7 @@ const resolvers = {
             }
           
             throw new AuthenticationError('Not logged in');
-        },
-        /* get a user by username
-        user: async (parent, { username }) => {
-            return User.findOne({ username })
-                .select('-__v -password')
-                .populate('savedBooks');
-        } */
+        }
     },
     Mutation: {
         addUser: async (parent, args) => {
@@ -75,12 +69,3 @@ const resolvers = {
 
 
 module.exports = resolvers;
-
-/* 
-getSingleUser
-createUser
-login
-saveBook
-deleteBook
-
-*/
